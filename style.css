@@ -1,4 +1,7 @@
 /* Apply styles to the container */
+body{
+    background: #000;
+}
 div {
     max-width: 400px;
     margin: 0 auto;
