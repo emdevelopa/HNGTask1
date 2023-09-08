@@ -22,6 +22,7 @@ div {
     height: 150px;
     border-radius: 50%;
     margin: 20px 0;
+    border: 1px solid black;
   }
   
   /* Style the Current Day of the Week */
