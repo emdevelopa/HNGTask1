@@ -18,7 +18,8 @@ div {
     margin: 0 auto;
     text-align: center;
     padding: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+    box-shadow: 0px 0px 15px 1px #ffffff8e;
     border-radius: 5px;
     background-color: #04535cb9;
   }
@@ -33,7 +34,6 @@ div {
   /* Style the Slack Display Picture */
   img[data-testid="slackDisplayImage"] {
     border-radius: 50%;
-    /* margin: 20px 0; */
     width: 150px;
     height: 150px;
     transition: transform 0.3s;
@@ -46,20 +46,17 @@ div {
   /* Style the Current Day of the Week */
   p[data-testid="currentDayOfTheWeek"] {
     font-size: 18px;
-    /* color: #666; */
   }
   
   /* Style the Current UTC Time */
   p[data-testid="currentUTCTime"] {
     font-size: 18px;
-    /* color: #666; */
   }
   
   /* Style the Track */
   p[data-testid="myTrack"] {
     font-size: 18px;
     font-weight: bold;
-    /* color: #333; */
   }
   
   /* Style the GitHub URL */
