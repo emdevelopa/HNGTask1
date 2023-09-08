@@ -32,17 +32,15 @@ div {
   
   /* Style the Slack Display Picture */
   img[data-testid="slackDisplayImage"] {
+    border-radius: 50%;
+    /* margin: 20px 0; */
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    margin: 20px 0;
-    border: 1px solid black;
-    transition: all 0.5ms ease-in;
+    transition: transform 0.3s;
+    cursor: pointer;
   }
   img[data-testid="slackDisplayImage"]:hover{
-    width: 160px;
-    height: 160px;
-    transition: all 0.5ms ease;
+    transform: scale(1.1);
   }
   
   /* Style the Current Day of the Week */
