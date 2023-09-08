@@ -60,10 +60,9 @@
           .padStart(2, "0")} ${amOrPm} UTC`;
         document.querySelector('[data-testid="currentUTCTime"]').textContent =
           currentUTC;
-
-          setInterval(getUpdatedtime,1000)
       }
       getUpdatedtime()
+      setInterval(getUpdatedtime,1000)
     </script>
   </body>
 </html>
