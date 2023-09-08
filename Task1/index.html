@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div>
+        <!-- Slack Name -->
+        <p data-testid="slackUserName">EMWRLD</p>
+
+        <!-- Slack Display Picture -->
+        <img src="dp.jpg" alt="EMWRLD" data-testid="slackDisplayImage" />
+
+        <!-- Current Day of the Week -->
+        <p data-testid="currentDayOfTheWeek"></p>
+
+        <!-- Current UTC Time -->
+        <p data-testid="currentUTCTime">C</p>
+
+        <!-- Track -->
+        <p data-testid="myTrack"></p>
+
+        <!-- GitHub URL -->
+        <a href="https://github.com/emdevelopa/HNGTask1" data-testid="githubURL"
+          >GitHub Repository</a
+        >
+      </div>
+    </main>
+    <script>
+      function getUpdatedtime() {
+        // Get the current day
+        const days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        const currentDate = new Date();
+        const currentDay = days[currentDate.getUTCDay()];
+        document.querySelector(
+          '[data-testid="currentDayOfTheWeek"]'
+        ).textContent = currentDay;
+
+        const trackElement = document.querySelector('[data-testid="myTrack"]');
+            trackElement.textContent = 'Frontend'
+
+        // Get the current time in milliseconds
+        const currentUTCMilliseconds = new Date().getTime();
+
+        // Display the current UTC time in milliseconds
+        document.querySelector(
+          '[data-testid="currentUTCTime"]'
+        ).textContent = `${currentUTCMilliseconds} UTC`;
+      }
+      getUpdatedtime();
+      setInterval(getUpdatedtime, 1);
+    </script>
+  </body>
+</html>
