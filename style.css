@@ -19,7 +19,7 @@ div {
     text-align: center;
     padding: 20px;
     /* border: 1px solid #ccc; */
-    box-shadow: 0px 0px 15px 1px #ffffff8e;
+    box-shadow: 0px 0px 15px 1px #ffffffff;
     border-radius: 5px;
     background-color: #04535cb9;
   }
@@ -61,14 +61,38 @@ div {
   
   /* Style the GitHub URL */
   a[data-testid="githubURL"] {
-    display: block;
+    display: inline-block;
+    background-color: #7aa5d3;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    color: #000;
+    /* display: block;
     margin-top: 20px;
     font-size: 16px;
     color: #007bff;
-    text-decoration: none;
+    text-decoration: none; */
   }
   
   a[data-testid="githubURL"]:hover {
     text-decoration: underline;
+    background-color: #5e87b7;
   }
+  a.button {
+    display: inline-block;
+    background-color: #7aa5d3;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+a.button:hover {
+    background-color: #5e87b7;
+}
   
