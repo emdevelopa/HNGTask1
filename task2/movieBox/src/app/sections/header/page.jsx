@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import { useState, React, useEffect } from "react";
 import { FaTimes } from 'react-icons/fa';
 import Navbar from "./navbar";
@@ -24,7 +25,7 @@ export default function Header() {
     };
 
     fetchTrendingMovies();
-  }, []);
+  }, [apiUrl]);
 
   // Function to advance to the next slide
   const nextSlide = () => {
@@ -38,7 +39,7 @@ export default function Header() {
     return () => {
       clearInterval(interval); // Clear the interval on component unmount
     };
-  }, [currentSlide, movieData]);
+  }, [currentSlide, movieData,nextSlide]);
 
   return (
     <div>
@@ -55,18 +56,18 @@ export default function Header() {
             <div className="relative bg-white">
               <div className="relative">
                 {/* <img src="blue.jpg" className="absolute w-full" /> */}
-                <div className="bg-black opacity-70 h-[90vh] flex items-center justify-end absolute w-full">
+                <div className="bg-black opacity-80 h-[90vh] flex items-center justify-end absolute w-full">
 
                 </div>
                 <div className="flex absolute w-full justify-end items-center h-[90vh] px-8 max-md-[650px]:justify-center max-md-[650px]:items-end">
                   <ul className="max-md-[650px]:flex max-md-[650px]:justify-between max-md-[650px]:mb-8 max-md-[650px]:w-[50%]">
-                    {movieData.map((_, index) => (
+                    {movieData.map((_, index) => (  
                       <li
                         key={index}
                         className={`text-white text-[24px] ${index === currentSlide ? 'font-bold text-[26px]' : 'opacity-70'
                           }`}
                       >
-                        {index === currentSlide ? `-${index}` : index}
+                         {index === currentSlide ? `-${index + 1}` : index + 1}
                       </li>
                     ))}
                   </ul>
@@ -77,11 +78,11 @@ export default function Header() {
                   <h1 className="text-[48px] font-bold max-md-[650px]:text-[38px]">{movie.title}</h1>
                   <div className="flex gap-8">
                     <div className="flex gap-2 items-center">
-                      <img src="IMBD.svg" alt="imdb" width='55px' />
+                      <Image src="IMBD.svg" alt="imdb" width={40} height={40}/>
                       <p>86.0 / 100</p>
                     </div>
                     <div className="flex gap-2 items-center">
-                      <img src="tomato.svg" alt="tomato" width='25px' />
+                      <Image src="tomato.svg" alt="tomato" width={20} height={50}/>
                       <p>97%</p>
                     </div>
 
