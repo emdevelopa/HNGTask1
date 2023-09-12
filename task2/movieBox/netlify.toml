@@ -1,7 +1,0 @@
-[build]
-  # Your existing build settings
-  command = "npm run build"
-  publish = "out"
-
-  # Configure build caching
-  cache = { paths = ["node_modules/**/*", ".next/cache/**/*"] }
