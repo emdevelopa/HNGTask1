@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { useState, React, useEffect } from "react";
+import { useState, React, useEffect, useCallback } from "react";
 import { FaTimes } from 'react-icons/fa';
 import Navbar from "./navbar";
 
@@ -28,9 +28,9 @@ export default function Header() {
   }, [apiUrl]);
 
   // Function to advance to the next slide
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % movieData.length);
-  };
+  }, [movieData]);
 
   useEffect(() => {
     // Auto-slide every 3 seconds
@@ -39,7 +39,7 @@ export default function Header() {
     return () => {
       clearInterval(interval); // Clear the interval on component unmount
     };
-  }, [currentSlide, nextSlide]);
+  }, [currentSlide, movieData, nextSlide]);
 
   return (
     <div>
