@@ -39,7 +39,7 @@ export default function Header() {
     return () => {
       clearInterval(interval); // Clear the interval on component unmount
     };
-  }, [currentSlide, movieData,nextSlide]);
+  }, [currentSlide, nextSlide]);
 
   return (
     <div>
@@ -78,11 +78,11 @@ export default function Header() {
                   <h1 className="text-[48px] font-bold max-md-[650px]:text-[38px]">{movie.title}</h1>
                   <div className="flex gap-8">
                     <div className="flex gap-2 items-center">
-                      <Image src="IMBD.svg" alt="imdb" width={40} height={40}/>
+                      <Image src="IMBD.svg" alt="imdb" width={40} height={40} style={{ width: "auto", height: "auto" }} />
                       <p>86.0 / 100</p>
                     </div>
                     <div className="flex gap-2 items-center">
-                      <Image src="tomato.svg" alt="tomato" width={20} height={50}/>
+                      <Image src="tomato.svg" alt="tomato" width={20} height={50} style={{ width: "auto", height: "auto" }} />
                       <p>97%</p>
                     </div>
 
