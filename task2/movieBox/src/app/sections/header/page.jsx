@@ -47,7 +47,7 @@ export default function Header() {
         movieData.map((movie, movieIndex) => (
           <main
             key={movieIndex}
-            className={`bg-[#000000d1] text-white h-[90vh] bg-cover bg-center ${movieIndex === currentSlide ? '' : 'hidden'
+            className={`bg-[#000000d1] text-white h-[100vh] bg-cover bg-center ${movieIndex === currentSlide ? '' : 'hidden'
               }`}
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
@@ -56,7 +56,7 @@ export default function Header() {
             <div className="relative bg-white">
               <div className="relative">
                 {/* <img src="blue.jpg" className="absolute w-full" /> */}
-                <div className="bg-black opacity-80 h-[90vh] flex items-center justify-end absolute w-full">
+                <div className="bg-black opacity-80 h-[100vh] flex items-center justify-end absolute w-full">
 
                 </div>
                 <div className="flex absolute w-full justify-end items-center h-[90vh] px-8 max-md-[650px]:justify-center max-md-[650px]:items-end">
