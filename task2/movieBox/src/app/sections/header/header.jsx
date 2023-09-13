@@ -1,8 +1,6 @@
 "use client"
 import Image from "next/image";
 import { useState, React, useEffect, useCallback } from "react";
-import { FaTimes } from 'react-icons/fa';
-import Navbar from "./navbar";
 
 export default function Header() {
 
@@ -60,7 +58,7 @@ export default function Header() {
 
                 </div>
                 <div className="flex absolute w-full justify-end items-center h-[90vh] px-8 max-md-[650px]:justify-center max-md-[650px]:items-end">
-                  <ul className="max-md-[650px]:flex max-md-[650px]:justify-between max-md-[650px]:mb-8 max-md-[650px]:w-[50%]">
+                  <ul className="max-md-[650px]:flex max-md-[650px]:justify-between max-md-[650px]:mb-2 max-md-[650px]:w-[50%]">
                     {movieData.map((_, index) => (
                       <li
                         key={index}
@@ -89,7 +87,7 @@ export default function Header() {
                   </div>
                   <h1 className="md-[650px]:w-[60%] font-semibold max-md-[650px]:text-[12px]">{movie.overview}</h1>
                   <div>
-                    <div className="flex px-[6px] w-[20%] rounded items-center py-[5px] text-[20px] font-bold gap-x-2 bg-[#BE123C]"> <div><Image src="Play.svg" alt="play" width={60} height={80} style={{ width: "3em", height: "auto" }} /></div> Watch Trailer</div>
+                    <div className="flex px-[6px] w-[20%] rounded items-center py-[5px] max-md-[650px]:w-[60%] text-[20px] font-bold gap-x-2 bg-[#BE123C]"> <div><Image src="Play.svg" alt="play" width={60} height={80} style={{ width: "3em", height: "auto" }} /></div> Watch Trailer</div>
                   </div>
                 </div>
               </div>
