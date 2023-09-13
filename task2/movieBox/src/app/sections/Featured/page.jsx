@@ -29,7 +29,7 @@ export default function Featured() {
         <>
             <section className="p-20 max-md-[650px]:p-5">
                 <div className="flex justify-between">
-                    <h1 className="font-bold text-[36px]">Featured Movie</h1>
+                    <h1 className="font-bold text-[36px] max-md-[400px]:text-[26px]">Featured Movie</h1>
                     <div className="flex text-[#BE123C] items-center gap-x-4"><p>See more </p> <FaChevronRight /></div>
                 </div>
 
@@ -39,12 +39,12 @@ export default function Featured() {
                         <div key={movie.id}>
                             <div className="flex flex-col gap-2">
                                 <div className='bg-red-600 h-[25em] p-6 flex justify-between bg-cover bg-center bg-no-repeat relative' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.poster_path})` }}>
-                                    <p className='bg-[#f3f4f680] rounded-[2em] w-[50%] h-[2em] flex justify-center items-center px-2'>TV Series</p>
+                                    <p className='bg-[#f3f4f680] rounded-[2em] w-[50%] h-[2em] flex justify-center items-center px-2'>Movie</p>
                                     <div className='bg-[#f3f4f680] rounded-[50%] h-[2em] w-[2em] flex justify-center'>
                                         <Image src="Heart.svg" alt="searchIcon" height={0} width={20} style={{ width: "20px", height: "auto" }} />
                                     </div>
                                 </div>
-                                <p>USA, 2016 - Current</p>
+                                <p>{movie.release_date}</p>
                                 <h2 className='font-bold text-[24px]'>{movie.title}</h2>
                                 <div className="flex gap-8 justify-between">
                                     <div className="flex gap-2 items-center">
