@@ -61,13 +61,13 @@ export default function Header() {
                 </div>
                 <div className="flex absolute w-full justify-end items-center h-[90vh] px-8 max-md-[650px]:justify-center max-md-[650px]:items-end">
                   <ul className="max-md-[650px]:flex max-md-[650px]:justify-between max-md-[650px]:mb-8 max-md-[650px]:w-[50%]">
-                    {movieData.map((_, index) => (  
+                    {movieData.map((_, index) => (
                       <li
                         key={index}
                         className={`text-white text-[24px] ${index === currentSlide ? 'font-bold text-[26px]' : 'opacity-70'
                           }`}
                       >
-                         {index === currentSlide ? `-${index + 1}` : index + 1}
+                        {index === currentSlide ? `-${index + 1}` : index + 1}
                       </li>
                     ))}
                   </ul>
@@ -88,12 +88,15 @@ export default function Header() {
 
                   </div>
                   <h1 className="md-[650px]:w-[60%] font-semibold max-md-[650px]:text-[12px]">{movie.overview}</h1>
+                  <div>
+                    <div className="flex px-[6px] w-[20%] rounded items-center py-[5px] text-[20px] font-bold gap-x-2 bg-[#BE123C]"> <div><Image src="Play.svg" alt="play" width={60} height={80} style={{ width: "3em", height: "auto" }} /></div> Watch Trailer</div>
+                  </div>
                 </div>
               </div>
             </div>
-          
+
           </main>
-          
+
         ))
       ) : (
         <div className="text-[#BE123C]">
