@@ -1,12 +1,36 @@
 "use client"
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 
 export default function Navbar() {
     const [burger, setBurger] = useState(false);
+    const [scrolling, setScrolling] = useState(false);
+
+    useEffect(() => {
+        // Add an event listener to track the scroll position
+        window.addEventListener("scroll", handleScroll);
+        
+        return () => {
+            // Remove the event listener when the component unmounts
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const handleScroll = () => {
+        // Calculate the scroll position as a percentage of the viewport height
+        const scrollPosition = (window.scrollY / window.innerHeight) * 100;
+
+        // Check if the scroll position is greater than or equal to 50%
+        if (scrollPosition >= 100) {
+            setScrolling(true);
+        } else {
+            setScrolling(false);
+        }
+    };
+
     return (
-        <header className="md-[650px]:px-16 flex justify-between items-center w-full z-20 p-2 fixed">
+        <header className={`md-[650px]:px-16 flex justify-between items-center w-full z-20 p-2 fixed ${scrolling ? 'bg-[#000000d2]' : ''}`}>
             <div>
                 <Image src="logo.svg" alt="logo" width={150} priority height={0} style={{ width: "auto", height: "auto" }} />
             </div>
