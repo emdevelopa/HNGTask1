@@ -81,7 +81,7 @@ export default function Header() {
                     </div>
                     <div className="flex gap-2 items-center">
                       <Image src="tomato.svg" alt="tomato" width={20} height={50} style={{ width: "auto", height: "auto" }} />
-                      <p>97%</p>
+                      <p>{Math.floor(movie.vote_average * 10)}%</p>
                     </div>
 
                   </div>
