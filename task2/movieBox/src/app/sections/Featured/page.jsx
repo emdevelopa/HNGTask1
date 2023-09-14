@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { FaChevronRight } from "react-icons/fa";
 
@@ -92,9 +93,11 @@ export default function Featured() {
                         <div key={movie.id}>
                           
                             <div className="flex flex-col gap-2 relative">
-                            <div className='h-[25em] w-full z-10 absolute hover:bg-[#0000007d]' onClick={() => {
+                            <Link href={`/more_details#title=${movie.title}#id=${movie.id}`}>
+                                <div className='h-[25em] w-full z-10 absolute hover:bg-[#0000007d]' onClick={() => {
                                        console.log("clicked", movie.id);
                                     }}></div>
+                                    </Link>
                                 <div className='h-[25em] p-6 flex justify-between bg-cover bg-center bg-no-repeat relative'  style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.poster_path})` }}>
                                     <p className='bg-[#f3f4f680] rounded-[2em] w-[50%] h-[2em] flex justify-center items-center px-2'>Movie</p>
                                     <div className={`rounded-[50%] h-[2em] z-30 w-[2em] flex justify-center ${isMovieFavorited(movie.id) ? 'bg-red-600' : 'bg-[#f3f4f680]'}`} onClick={() => {
