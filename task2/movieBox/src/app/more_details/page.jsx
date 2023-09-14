@@ -11,14 +11,20 @@ export default function MoreDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [loading, setLoading] = useState(true); // Added loading state
   const apiKey = '2d02ad9838a96f971164752877c1f7ec';
-
+  
   function getParameterByName(name) {
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)");
-    var results = regex.exec(window.location.href);
-    if (!results || !results[2]) return null;
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
+    if (typeof window !== 'undefined') {
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&#]" + name + "(=([^&#]*)|&|#|$)");
+      var results = regex.exec(window.location.href);
+      if (!results || !results[2]) return null;
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    } else {
+      // Handle the case where window is not defined (e.g., in a Node.js environment)
+      return null;
+    }
   }
+  
 
   useEffect(() => {
     // Fetch movie details when getMovieid changes
