@@ -1,5 +1,3 @@
-
-
 "use client";
 import React, { useState, useEffect } from "react";
 import Interface from "./interface";
@@ -21,15 +19,17 @@ export default function MoreDetails() {
     if (!results || !results[2]) return null;
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
-  // ...
 
   useEffect(() => {
     // Fetch movie details when getMovieid changes
-    setGetMovieid(parseInt(getParameterByName("id")))
+    setGetMovieid(parseInt(getParameterByName("id")));
+  }, []); // Include getMovieid in the dependency array
+
+  useEffect(() => {
     if (!isNaN(getMovieid)) {
       fetchMovieDetails(getMovieid);
     }
-  },[]); // Include getMovieid in the dependency array
+  }, [getMovieid]); // Fetch data when getMovieid changes
 
   const fetchMovieDetails = (movieId) => {
     const intMovieId = parseInt(movieId);
@@ -46,27 +46,18 @@ export default function MoreDetails() {
         // Update the movieDetails state with the fetched data
         setMovieDetails(data);
         console.log(data);
-        setLoading(!loading); // Set loading to false when data is loaded
+        setLoading(false); // Set loading to false when data is loaded
       })
       .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
         setLoading(false); // Set loading to false on error
       });
   };
-  
-  // if (window.location.href === "http://localhost:3000/more_details") {
-  // return <p className="text-red-500">unable to fetch</p>
-  // }
-
-  if (window.location.href === "https://jovial-souffle-9501e4.netlify.app/more_details") {
-    return <p>unable to fetch</p>
-    }
 
   if (loading) {
     // Render a loading state while fetching data
-    return <div>Loading...{  console.log(window.location.href)}</div>
+    return <div>Loading...</div>;
   }
-
 
   if (!isNaN(getMovieid)) {
     // Render movie details once data is loaded and getMovieid is a valid number
@@ -74,7 +65,7 @@ export default function MoreDetails() {
       <>
         <h1>{movieDetails?.adult.toString()}</h1>
         <h1>good: {typeof getMovieid}</h1>
-        <Interface adult={movieDetails?.adult.toString()} title={movieDetails?.title}/>
+        <Interface adult={movieDetails?.adult.toString()} title={movieDetails?.title} />
       </>
     );
   } else {
