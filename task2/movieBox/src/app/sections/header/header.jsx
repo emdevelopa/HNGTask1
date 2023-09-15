@@ -16,6 +16,7 @@ export default function Header() {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
+        console.log(data);
         setMovieData(data.results.slice(0, 5)); // Only take the first 5 movies
       } catch (error) {
         console.error("Error fetching trending movies:", error);

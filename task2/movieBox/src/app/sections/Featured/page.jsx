@@ -6,7 +6,8 @@ import { FaChevronRight } from "react-icons/fa";
 
 export default function Featured() {
     const [movies, setMovies] = useState([]);
-    const [favMovies, setFavMovies] = useState([]); // Array to store favorite movie IDs
+    const [favMovies, setFavMovies] = useState([]);
+    const [favMovies2, setFavMovies2] = useState([]); // Array to store favorite movie IDs
     const [movieDetails, setMovieDetails] = useState({});
     console.log(favMovies);
     const apiKey = '2d02ad9838a96f971164752877c1f7ec';
@@ -55,6 +56,13 @@ export default function Featured() {
                     ...prevDetails,
                     [movieId]: data,
                 }));
+                if (Array.isArray(movies)) {
+                    const movieDetails2 = movies.slice(0, 10);
+                    console.log("Good res", movieDetails2);
+                    setFavMovies2(movieDetails2)
+                  } else {
+                    console.log("movieDetails is not an array or is empty");
+                  }
             })
             .catch((error) => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -76,7 +84,11 @@ export default function Featured() {
         }
     };
 
-    
+    useEffect(()=>{
+        console.log(movieDetails);
+        // const movieDetails2 = movieDetails.slice(0,10) 
+        // console.log("Good res",movieDetails2);
+    },[])
 
     return (
         <>
@@ -88,7 +100,7 @@ export default function Featured() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
-                    {movies.map((movie) => (
+                    {favMovies2.map((movie) => (
                         
                         <div key={movie.id}>
                           

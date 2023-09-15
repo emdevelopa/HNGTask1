@@ -68,7 +68,7 @@ export default function MoreDetails() {
   setTimeout(() => {
     setLoading(false)
   }, 3000);
-  if (results === "http://localhost:3000/more_details") {
+  if (results === "https://jovial-souffle-9501e4.netlify.app/more_details") {
     // console.log("redirecting");
     redirectTo('/');
   }
@@ -83,7 +83,7 @@ export default function MoreDetails() {
 
 
   if (movieDetails?.title && getMovieid) {
-    if (!isNaN(getMovieid && results === `http://localhost:3000/more_details#title=${movieDetails?.title}#id=${getMovieid}`)) {
+    if (!isNaN(getMovieid && results === `https://jovial-souffle-9501e4.netlify.app/more_details#title=${movieDetails?.title}#id=${getMovieid}`)) {
       // Render movie details once data is loaded and getMovieid is a valid number
       return (
         <>
