@@ -105,7 +105,7 @@ export default function Interface({ title, id, backdrop_path, poster_path }) {
             <div className="flex max-md-[650px]:flex-col max-md-[650px]:gap-4 gap-8">
               <div className="md-[650px]:w-[70%]">
                 <p className="pb-6">After thirty years, Maverick is still pushing the envelope as a top naval aviator,
-                  but must confront ghosts of his past when he leads TOP GUN's elite graduates
+                  but must confront ghosts of his past when he leads TOP GUNs elite graduates
                   on a mission that demands the ultimate sacrifice from those chosen to fly it.
                 </p>
 
