@@ -3,9 +3,20 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-export default function Interface({ title, id, backdrop_path, poster_path }) {
+export default function Interface({ title, id, backdrop_path, poster_path,year,overview,runtime,genres}) {
   const [sidePanel, setSidePanel] = useState(true);
 
+  const runtimeMinutes = runtime;
+
+// Calculate hours and minutes
+const hours = Math.floor(runtimeMinutes / 60);
+const minutes = runtimeMinutes % 60;
+
+// Format the result
+const formattedRuntime = hours + "h " + minutes + "m";
+
+// Output the result
+console.log(formattedRuntime)
   return (
     <>
       <nav className="flex justify-end md-[650px]:hidden z-20 fixed w-full bg-[#00000072]">
@@ -78,20 +89,20 @@ export default function Interface({ title, id, backdrop_path, poster_path }) {
             </div>
             <div className="flex justify-between p-2  max-md-[480px]:gap-2 max-md-[480px]:items-start">
               <div className="flex items-center text-[23px] font-semibold text-[#404040] max-md-[480px]:flex-col max-md-[480px]:items-start max-md-[480px]:justify-normal justify-center gap-2 max-md-[480px]:text-[18px]">
-                <h2 className="max-md-[480px]:text-[18px]">Top Gun: Maverick</h2>
+                <h2 className="max-md-[480px]:text-[18px]">{title}</h2>
                 <div className="max-md-[480px]:flex md-[480px]:justify-between md-[480px]:gap-4 md-[480px]:items-center md-[480px]:flex max-md-[480px]:gap-2 flex-row max-md-[480px]:items-center">
                   <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%]"></div>
-                  <h2>2022</h2>
+                  <h2>{year}</h2>
                   <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%]"></div>
                   <h2>PG-13</h2>
                 </div>
                 <div className="max-md-[480px]:flex gap-2 items-center md-[480px]:items-center md-[480px]:flex">
                   <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%]"></div>
-                  <h2>1h 30m</h2></div>
+                  <h2>{formattedRuntime}</h2></div>
                 <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%] max-md-[480px]:hidden"></div>
                 <div className="flex text-[16px] text-[#B91C1C] md-[480px]:gap-9 gap-2 pl-5 max-md-[480px]:pl-0">
-                  <p className="border border-[#F8E7EB] rounded-2xl px-3 py-0.5">Action</p>
-                  <p className="border border-[#F8E7EB] rounded-2xl px-3 py-0.5">Drama</p>
+                  {/* <p className="border border-[#F8E7EB] rounded-2xl px-3 py-0.5">{genres}</p> */}
+                  {genres}
                 </div>
               </div>
 
@@ -104,9 +115,7 @@ export default function Interface({ title, id, backdrop_path, poster_path }) {
             </div>
             <div className="flex max-md-[650px]:flex-col max-md-[650px]:gap-4 gap-8">
               <div className="md-[650px]:w-[70%]">
-                <p className="pb-6">After thirty years, Maverick is still pushing the envelope as a top naval aviator,
-                  but must confront ghosts of his past when he leads TOP GUNs elite graduates
-                  on a mission that demands the ultimate sacrifice from those chosen to fly it.
+                <p className="pb-6">{overview}
                 </p>
 
                 <div className="flex flex-col gap-8">
@@ -136,7 +145,7 @@ export default function Interface({ title, id, backdrop_path, poster_path }) {
                   <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat rounded-tl-md rounded-bl-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
                   <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
                   <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat rounded-tr-md rounded-br-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
-                  <div className=' w-full z-10 absolute bg-[red] flex items-center bottom-0 justify-around text-[#fff] text-[14px]'><FaBars/>
+                  <div className=' w-full z-10 absolute bg-[#12121280] backdrop-blur-[2px] font-bold flex items-center bottom-0 justify-around text-[#fff] text-[14px] py-4 rounded-md'><FaBars/>
                   <p>The Best Movies and Shows in September</p> 
                   </div>
                 </div>

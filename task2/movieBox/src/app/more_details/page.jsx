@@ -22,7 +22,7 @@ export default function MoreDetails() {
       if (!results || !results[2]) return null;
       return decodeURIComponent(results[2].replace(/\+/g, " "));
     } else {
-      
+
       return null;
     }
   }
@@ -87,7 +87,11 @@ export default function MoreDetails() {
       // Render movie details once data is loaded and getMovieid is a valid number
       return (
         <>
-          <Interface title={movieDetails?.title} link={results} id={getMovieid} backdrop_path={movieDetails?.backdrop_path} poster_path={movieDetails?.poster_path}/>
+          <Interface title={movieDetails?.title} link={results} id={getMovieid} backdrop_path={movieDetails?.backdrop_path} poster_path={movieDetails?.poster_path} year={movieDetails?.release_date.substring(0, 4)} overview={movieDetails?.overview} runtime={movieDetails?.runtime} genres={movieDetails?.genres?.map(genre => (
+            <p key={genre.id} className="border border-[#F8E7EB] rounded-2xl px-3 py-0.5">
+              {genre.name}
+            </p>
+          ))} />
         </>
       )
     }
