@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Interface from "./interface";
 
+
 export default function MoreDetails() {
   const [getMovieid, setGetMovieid] = useState(() => {
     // Initialize getMovieid with a valid integer or handle the default case
@@ -11,7 +12,8 @@ export default function MoreDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const [loading, setLoading] = useState(true); // Added loading state
   const apiKey = '2d02ad9838a96f971164752877c1f7ec';
-  
+
+
   function getParameterByName(name) {
     if (typeof window !== 'undefined') {
       name = name.replace(/[\[\]]/g, "\\$&");
@@ -20,11 +22,15 @@ export default function MoreDetails() {
       if (!results || !results[2]) return null;
       return decodeURIComponent(results[2].replace(/\+/g, " "));
     } else {
-      // Handle the case where window is not defined (e.g., in a Node.js environment)
+      
       return null;
     }
   }
-  
+
+  if (typeof window !== 'undefined') {
+    var results = window.location.href;
+    console.log(results);
+  }
 
   useEffect(() => {
     // Fetch movie details when getMovieid changes
@@ -59,23 +65,31 @@ export default function MoreDetails() {
         setLoading(false); // Set loading to false on error
       });
   };
-
+  setTimeout(() => {
+    setLoading(false)
+  }, 3000);
+  if (results === "http://localhost:3000/more_details") {
+    // console.log("redirecting");
+    redirectTo('/');
+  }
   if (loading) {
     // Render a loading state while fetching data
     return <div>Loading...</div>;
   }
 
-  if (!isNaN(getMovieid)) {
-    // Render movie details once data is loaded and getMovieid is a valid number
-    return (
-      <>
-        <h1>{movieDetails?.adult.toString()}</h1>
-        <h1>good: {typeof getMovieid}</h1>
-        <Interface adult={movieDetails?.adult.toString()} title={movieDetails?.title} />
-      </>
-    );
-  } else {
-    // Handle the case where getMovieid is not a valid number
-    return <div>Invalid movie ID</div>;
+  function redirectTo(url) {
+    window.location.href = url;
+  }
+
+
+  if (movieDetails?.title && getMovieid) {
+    if (!isNaN(getMovieid && results === `http://localhost:3000/more_details#title=${movieDetails?.title}#id=${getMovieid}`)) {
+      // Render movie details once data is loaded and getMovieid is a valid number
+      return (
+        <>
+          <Interface title={movieDetails?.title} link={results} id={getMovieid} backdrop_path={movieDetails?.backdrop_path}/>
+        </>
+      )
+    }
   }
 }

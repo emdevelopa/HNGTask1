@@ -103,7 +103,7 @@ export default function Featured() {
                                     <div className={`rounded-[50%] h-[2em] z-30 w-[2em] flex justify-center ${isMovieFavorited(movie.id) ? 'bg-red-600' : 'bg-[#f3f4f680]'}`} onClick={() => {
                                         toggleFavMovie(movie.id);
                                     }}>
-                                        <Image src="Heart.svg" alt="searchIcon" height={0} width={20} style={{ width: "20px", height: "auto" }} />
+                                        <Image src="Heart.svg" alt="searchIcon" height={0} width={20} style={{ width: "auto", height: "auto" }} />
                                     </div>
                                    
                                 </div>
