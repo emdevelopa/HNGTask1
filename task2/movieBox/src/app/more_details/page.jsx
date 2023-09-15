@@ -87,7 +87,7 @@ export default function MoreDetails() {
       // Render movie details once data is loaded and getMovieid is a valid number
       return (
         <>
-          <Interface title={movieDetails?.title} link={results} id={getMovieid} backdrop_path={movieDetails?.backdrop_path}/>
+          <Interface title={movieDetails?.title} link={results} id={getMovieid} backdrop_path={movieDetails?.backdrop_path} poster_path={movieDetails?.poster_path}/>
         </>
       )
     }

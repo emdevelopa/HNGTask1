@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-export default function Interface({ title, id, backdrop_path }) {
+export default function Interface({ title, id, backdrop_path, poster_path }) {
   const [sidePanel, setSidePanel] = useState(true);
 
   return (
@@ -102,14 +102,14 @@ export default function Interface({ title, id, backdrop_path }) {
                 <p className="text-[#666] font-semibold md-[480px]:text-[20px]">| 350k</p>
               </div>
             </div>
-            <div className="flex max-md-[650px]:flex-col max-md-[650px]:gap-4">
+            <div className="flex max-md-[650px]:flex-col max-md-[650px]:gap-4 gap-8">
               <div className="md-[650px]:w-[70%]">
                 <p className="pb-6">After thirty years, Maverick is still pushing the envelope as a top naval aviator,
                   but must confront ghosts of his past when he leads TOP GUN's elite graduates
                   on a mission that demands the ultimate sacrifice from those chosen to fly it.
                 </p>
 
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-8">
                   <p>Director : <span className="text-[#BE123C]">Joseph Kosinsk</span></p>
                   <p>Writers : <span className="text-[#BE123C]">Jim Cash, Jack Epps Jr,  Peter Craig</span></p>
                   <p>Stars : <span className="text-[#BE123C]">Tom Cruise, Jennifer Connelly, Miles Teller</span></p>
@@ -127,9 +127,19 @@ export default function Interface({ title, id, backdrop_path }) {
                 </div>
 
               </div>
-              <div className="w-[30%] max-md-[650px]:w-full">
-              <div className="bg-[#BE123C] px-2 py-4 rounded-lg w-full flex justify-center items-center font-bold text-[#fff]"> <Image src="TwoTickets.svg" alt="logo" className="max-md-[450px]:w-[50%]" width={0} priority height={0} style={{ width: "auto", height: "auto" }} />See Showtimes</div>
-              <div className="bg-[#BE123C] px-2 py-4 rounded-lg w-full flex justify-center items-center font-bold text-[#000] gap-3 border border-[#BE123C]"><FaBars/>More watch options</div>
+              <div className="w-[30%] max-md-[650px]:w-full flex flex-col gap-8">
+                <div className="flex flex-col gap-2">
+                  <div className="bg-[#BE123C] px-2 py-4 rounded-lg w-full flex justify-center items-center font-bold text-[#fff]"> <Image src="TwoTickets.svg" alt="logo" className="max-md-[450px]:w-[50%]" width={0} priority height={0} style={{ width: "auto", height: "auto" }} />See Showtimes</div>
+                  <div className="bg-[#BE123C1A] px-2 py-4 rounded-lg w-full flex justify-center items-center font-bold text-[#000] gap-3 border border-[#BE123C]"><FaBars />More watch options</div>
+                </div>
+                <div className="flex gap-[1px] relative">
+                  <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat rounded-tl-md rounded-bl-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
+                  <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
+                  <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat rounded-tr-md rounded-br-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
+                  <div className=' w-full z-10 absolute bg-[red] flex items-center bottom-0 justify-around text-[#fff] text-[14px]'><FaBars/>
+                  <p>The Best Movies and Shows in September</p> 
+                  </div>
+                </div>
               </div>
             </div>
           </section>
