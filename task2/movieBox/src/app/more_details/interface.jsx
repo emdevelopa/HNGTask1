@@ -96,8 +96,8 @@ export default function Interface({ title, id, backdrop_path, poster_path, year,
                 <div className="max-md-[480px]:flex gap-2 items-center md-[480px]:items-center md-[480px]:flex">
                   <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%]"></div>
                   <h2>{formattedRuntime}</h2></div>
-                
-                <div className="flex text-[16px] text-[#B91C1C] md-[480px]:gap-1 gap-2 pl-5 max-md-[480px]:pl-0">
+
+                <div className="grid grid-cols-5 max-md:grid-cols-2 gap-1 md:gap-2 text-16px text-[#B91C1C]">
                   {genres}
                 </div>
               </div>
@@ -140,8 +140,8 @@ export default function Interface({ title, id, backdrop_path, poster_path, year,
                 <div className="flex gap-[1px] relative">
                   {mostWatch.length > 0 ? (
                     mostWatch.map((m) => (
-                    <div key={m.id} className="w-full h-[15em] bg-cover bg-center bg-no-repeat rounded-tl-md rounded-bl-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${m.poster_path})` }}></div>
-                  ))) : ("")}
+                      <div key={m.id} className="w-full h-[15em] bg-cover bg-center bg-no-repeat rounded-tl-md rounded-bl-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${m.poster_path})` }}></div>
+                    ))) : ("")}
                   <div className=' w-full z-10 absolute bg-[#12121280] backdrop-blur-[2px] font-bold flex items-center bottom-0 justify-around text-[#fff] text-[14px] py-4 rounded-md'><FaBars />
                     <p>The Best Movies and Shows in September</p>
                   </div>
