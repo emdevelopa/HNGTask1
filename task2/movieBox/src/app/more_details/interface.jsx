@@ -31,7 +31,7 @@ export default function Interface({ title, id, backdrop_path, poster_path, year,
       <section className="flex justify-between relative font-normal">
 
         <aside className={`border z-20 border-[grey] relative py-[4em] rounded-tr-[3em] rounded-br-[3em] max-md-[650px]:translate-x-[-100%] md-[650px]:w-[18%] max-md-[650px]:absolute ${sidePanel ? "max-md-[650px]:hidden" : "w-[80%] bg-[#fff] max-md-[650px]:translate-x-[0%]"}`}>
-          <div className="absolute top-4 right-8 md-[650px]:hidden"><FaTimes onClick={() => {
+          <div className="absolute top-8 right-8 md-[650px]:hidden"><FaTimes onClick={() => {
             setSidePanel(!sidePanel);
           }} /> </div>
           <div className="flex flex-col gap-16">
