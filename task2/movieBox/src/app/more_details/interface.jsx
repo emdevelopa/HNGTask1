@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Interface({ title, id, backdrop_path, poster_path, year, overview, runtime, genres, writer, director, stars, vote_average, mostWatch }) {
