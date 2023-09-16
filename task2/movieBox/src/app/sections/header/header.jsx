@@ -53,7 +53,6 @@ export default function Header() {
           >
             <div className="relative bg-white">
               <div className="relative">
-                {/* <img src="blue.jpg" className="absolute w-full" /> */}
                 <div className="bg-black opacity-80 h-[100vh] flex items-center justify-end absolute w-full">
 
                 </div>
