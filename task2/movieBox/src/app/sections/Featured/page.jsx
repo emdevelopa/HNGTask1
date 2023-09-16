@@ -68,35 +68,6 @@ export default function Featured() {
         });
     }, [movies, fetchMovieDetails]);
     
-    
-
-    // const fetchMovieDetails = (movieId) => {
-    //     const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-
-    //     fetch(apiUrl)
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then((data) => {
-    //             // Update the movieDetails state with the fetched data
-    //             setMovieDetails((prevDetails) => ({
-    //                 ...prevDetails,
-    //                 [movieId]: data,
-    //             }));
-    //             if (Array.isArray(movies)) {
-    //                 const movieDetails2 = movies.slice(0, 10);
-    //                 setFavMovies2(movieDetails2)
-    //               } else {
-    //                 console.log("movieDetails is not an array or is empty");
-    //               }
-    //         })
-    //         .catch((error) => {
-    //             console.error('There was a problem with the fetch operation:', error);
-    //         });
-    // };
 
     const isMovieFavorited = (movieId) => {
         // Check if the movieId is in the favMovies array
@@ -155,7 +126,6 @@ export default function Featured() {
                                         <p>{Math.floor(movieDetails[movie.id]?.vote_average * 10)}%   </p>
                                     </div>
                                 </div>
-                                {/* <p className='font-bold'>Action, Adventure, Horror</p> */}
                                 <p className='font-bold'>{movieDetails[movie.id]?.genres?.map(genre => genre.name).join(', ')}</p>
                             </div>
                         </div>

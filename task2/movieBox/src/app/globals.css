@@ -16,20 +16,4 @@
   }
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
 
-.mainBgImage{
-  background: #f3f4f680;;
-  /* background: url(./sections/header/Poster.svg); */
-  /* background-size: cover; */
-
-  /* height: 90vh; */
-}
