@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FaChevronRight } from "react-icons/fa";
 
 export default function Featured() {
@@ -9,7 +9,6 @@ export default function Featured() {
     const [favMovies, setFavMovies] = useState([]);
     const [favMovies2, setFavMovies2] = useState([]); // Array to store favorite movie IDs
     const [movieDetails, setMovieDetails] = useState({});
-    console.log(favMovies);
     const apiKey = '2d02ad9838a96f971164752877c1f7ec';
 
     useEffect(() => {
@@ -31,18 +30,11 @@ export default function Featured() {
             });
     }, [apiKey]);
 
-
-    useEffect(() => {
-        // Fetch movie details for each movie in the initial movies list
-        movies.forEach((movie) => {
-            fetchMovieDetails(movie.id);
-        });
-    }, [movies]);
-
-
-    const fetchMovieDetails = (movieId) => {
+  
+    
+    const fetchMovieDetails = useCallback((movieId) => {
         const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-
+        
         fetch(apiUrl)
             .then((response) => {
                 if (!response.ok) {
@@ -58,7 +50,6 @@ export default function Featured() {
                 }));
                 if (Array.isArray(movies)) {
                     const movieDetails2 = movies.slice(0, 10);
-                    console.log("Good res", movieDetails2);
                     setFavMovies2(movieDetails2)
                   } else {
                     console.log("movieDetails is not an array or is empty");
@@ -67,7 +58,45 @@ export default function Featured() {
             .catch((error) => {
                 console.error('There was a problem with the fetch operation:', error);
             });
-    };
+    
+    }, [movies,apiKey]);
+    
+    useEffect(() => {
+        // Fetch movie details for each movie in the initial movies list
+        movies.forEach((movie) => {
+            fetchMovieDetails(movie.id);
+        });
+    }, [movies, fetchMovieDetails]);
+    
+    
+
+    // const fetchMovieDetails = (movieId) => {
+    //     const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+
+    //     fetch(apiUrl)
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 throw new Error('Network response was not ok');
+    //             }
+    //             return response.json();
+    //         })
+    //         .then((data) => {
+    //             // Update the movieDetails state with the fetched data
+    //             setMovieDetails((prevDetails) => ({
+    //                 ...prevDetails,
+    //                 [movieId]: data,
+    //             }));
+    //             if (Array.isArray(movies)) {
+    //                 const movieDetails2 = movies.slice(0, 10);
+    //                 setFavMovies2(movieDetails2)
+    //               } else {
+    //                 console.log("movieDetails is not an array or is empty");
+    //               }
+    //         })
+    //         .catch((error) => {
+    //             console.error('There was a problem with the fetch operation:', error);
+    //         });
+    // };
 
     const isMovieFavorited = (movieId) => {
         // Check if the movieId is in the favMovies array
@@ -84,11 +113,7 @@ export default function Featured() {
         }
     };
 
-    useEffect(()=>{
-        console.log(movieDetails);
-        // const movieDetails2 = movieDetails.slice(0,10) 
-        // console.log("Good res",movieDetails2);
-    },[])
+  
 
     return (
         <>
@@ -104,14 +129,12 @@ export default function Featured() {
                         
                         <div key={movie.id}>
                           
-                            <div className="flex flex-col gap-2 relative">
-                            <Link href={`/more_details#title=${movie.title}#id=${movie.id}`}>
-                                <div className='h-[25em] w-full z-10 absolute hover:bg-[#0000007d]' onClick={() => {
-                                       console.log("clicked", movie.id);
-                                    }}></div>
+                            <div className="flex flex-col gap-2  relative">
+                            <Link className='absolute h-[25em] w-full' href={`/more_details#title=${movie.title}#id=${movie.id}`}>
+                                <div className='h-[25em] w-full z-10 absolute hover:bg-[#0000007d]'></div>
                             </Link>
                                 <div className='h-[25em] p-6 flex justify-between bg-cover bg-center bg-no-repeat relative'  style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.poster_path})` }}>
-                                    <p className='bg-[#f3f4f680] rounded-[2em] w-[50%] h-[2em] flex justify-center items-center px-2'>Movie</p>
+                                    <p className='bg-[#f3f4f680] z-30 rounded-[2em] w-[50%] h-[2em] flex justify-center items-center px-2'>Movie</p>
                                     <div className={`rounded-[50%] h-[2em] z-30 w-[2em] flex justify-center ${isMovieFavorited(movie.id) ? 'bg-red-600' : 'bg-[#f3f4f680]'}`} onClick={() => {
                                         toggleFavMovie(movie.id);
                                     }}>

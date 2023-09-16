@@ -16,7 +16,6 @@ export default function Header() {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        console.log(data);
         setMovieData(data.results.slice(0, 5)); // Only take the first 5 movies
       } catch (error) {
         console.error("Error fetching trending movies:", error);
@@ -63,7 +62,7 @@ export default function Header() {
                     {movieData.map((_, index) => (
                       <li
                         key={index}
-                        className={`text-white text-[24px] ${index === currentSlide ? 'font-bold text-[26px]' : 'opacity-70'
+                        className={`text-white text-[18px] flex justify-end ${index === currentSlide ? 'font-bold text-[26px]' : 'opacity-10'
                           }`}
                       >
                         {index === currentSlide ? `-${index + 1}` : index + 1}

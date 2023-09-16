@@ -3,20 +3,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-export default function Interface({ title, id, backdrop_path, poster_path,year,overview,runtime,genres}) {
+export default function Interface({ title, id, backdrop_path, poster_path, year, overview, runtime, genres, writer, director, stars, vote_average, mostWatch }) {
   const [sidePanel, setSidePanel] = useState(true);
 
   const runtimeMinutes = runtime;
+  // Calculate hours and minutes
+  const hours = Math.floor(runtimeMinutes / 60);
+  const minutes = runtimeMinutes % 60;
 
-// Calculate hours and minutes
-const hours = Math.floor(runtimeMinutes / 60);
-const minutes = runtimeMinutes % 60;
+  // Format the result
+  const formattedRuntime = hours + "h " + minutes + "m";
 
-// Format the result
-const formattedRuntime = hours + "h " + minutes + "m";
-
-// Output the result
-console.log(formattedRuntime)
   return (
     <>
       <nav className="flex justify-end md-[650px]:hidden z-20 fixed w-full bg-[#00000072]">
@@ -34,7 +31,7 @@ console.log(formattedRuntime)
       <section className="flex justify-between relative font-normal">
 
         <aside className={`border z-20 border-[grey] relative py-[4em] rounded-tr-[3em] rounded-br-[3em] max-md-[650px]:translate-x-[-100%] md-[650px]:w-[18%] max-md-[650px]:absolute ${sidePanel ? "max-md-[650px]:hidden" : "w-[80%] bg-[#fff] max-md-[650px]:translate-x-[0%]"}`}>
-          <div className="absolute top-4 right-8"><FaTimes onClick={() => {
+          <div className="absolute top-4 right-8 md-[650px]:hidden"><FaTimes onClick={() => {
             setSidePanel(!sidePanel);
           }} /> </div>
           <div className="flex flex-col gap-16">
@@ -88,7 +85,7 @@ console.log(formattedRuntime)
               </div>
             </div>
             <div className="flex justify-between p-2  max-md-[480px]:gap-2 max-md-[480px]:items-start">
-              <div className="flex items-center text-[23px] font-semibold text-[#404040] max-md-[480px]:flex-col max-md-[480px]:items-start max-md-[480px]:justify-normal justify-center gap-2 max-md-[480px]:text-[18px]">
+              <div className="flex items-center text-[18px] font-semibold text-[#404040] max-md-[480px]:flex-col max-md-[480px]:items-start max-md-[480px]:justify-normal justify-center gap-2 max-md-[480px]:text-[18px]">
                 <h2 className="max-md-[480px]:text-[18px]">{title}</h2>
                 <div className="max-md-[480px]:flex md-[480px]:justify-between md-[480px]:gap-4 md-[480px]:items-center md-[480px]:flex max-md-[480px]:gap-2 flex-row max-md-[480px]:items-center">
                   <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%]"></div>
@@ -99,9 +96,8 @@ console.log(formattedRuntime)
                 <div className="max-md-[480px]:flex gap-2 items-center md-[480px]:items-center md-[480px]:flex">
                   <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%]"></div>
                   <h2>{formattedRuntime}</h2></div>
-                <div className="w-[8px] h-[8px] bg-[#404040] rounded-[50%] max-md-[480px]:hidden"></div>
-                <div className="flex text-[16px] text-[#B91C1C] md-[480px]:gap-9 gap-2 pl-5 max-md-[480px]:pl-0">
-                  {/* <p className="border border-[#F8E7EB] rounded-2xl px-3 py-0.5">{genres}</p> */}
+                
+                <div className="flex text-[16px] text-[#B91C1C] md-[480px]:gap-1 gap-2 pl-5 max-md-[480px]:pl-0">
                   {genres}
                 </div>
               </div>
@@ -109,7 +105,7 @@ console.log(formattedRuntime)
               <div className="flex items-center gap-2 max-md-[480px]:text-[16px]">
 
                 <Image src="Star.svg" alt="logo" className="max-md-[450px]:w-[50%]" width={0} priority height={0} style={{ width: "20%", height: "auto" }} />
-                <p className="text-[#E8E8E8] font-semibold md-[480px]:text-[25px]"> 8.5 </p>
+                <p className="text-[#E8E8E8] font-semibold md-[480px]:text-[20px]">{vote_average.toFixed(1)}</p>
                 <p className="text-[#666] font-semibold md-[480px]:text-[20px]">| 350k</p>
               </div>
             </div>
@@ -119,9 +115,9 @@ console.log(formattedRuntime)
                 </p>
 
                 <div className="flex flex-col gap-8">
-                  <p>Director : <span className="text-[#BE123C]">Joseph Kosinsk</span></p>
-                  <p>Writers : <span className="text-[#BE123C]">Jim Cash, Jack Epps Jr,  Peter Craig</span></p>
-                  <p>Stars : <span className="text-[#BE123C]">Tom Cruise, Jennifer Connelly, Miles Teller</span></p>
+                  <p>Director : <span className="text-[#BE123C]">{director}</span></p>
+                  <p>Writers : <span className="text-[#BE123C]">{writer}</span></p>
+                  <p>Stars : <span className="text-[#BE123C]">{stars}</span></p>
                   <div className="flex border rounded-lg z-20 relative">
                     <div className="bg-[#BE123C] px-2 py-4 rounded-lg max-md-[650px]:w-[30em] w-[30em] flex justify-center font-bold text-[#fff]">Top rated movie #65</div>
                     <select className="w-full  outline-none px-2 py-1 text-[#666] font-semibold md-[480px]:text-[20px]">
@@ -142,11 +138,12 @@ console.log(formattedRuntime)
                   <div className="bg-[#BE123C1A] px-2 py-4 rounded-lg w-full flex justify-center items-center font-bold text-[#000] gap-3 border border-[#BE123C]"><FaBars />More watch options</div>
                 </div>
                 <div className="flex gap-[1px] relative">
-                  <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat rounded-tl-md rounded-bl-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
-                  <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
-                  <div className="w-[10em] h-[15em] bg-cover bg-center bg-no-repeat rounded-tr-md rounded-br-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${poster_path})` }}></div>
-                  <div className=' w-full z-10 absolute bg-[#12121280] backdrop-blur-[2px] font-bold flex items-center bottom-0 justify-around text-[#fff] text-[14px] py-4 rounded-md'><FaBars/>
-                  <p>The Best Movies and Shows in September</p> 
+                  {mostWatch.length > 0 ? (
+                    mostWatch.map((m) => (
+                    <div key={m.id} className="w-full h-[15em] bg-cover bg-center bg-no-repeat rounded-tl-md rounded-bl-md" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${m.poster_path})` }}></div>
+                  ))) : ("")}
+                  <div className=' w-full z-10 absolute bg-[#12121280] backdrop-blur-[2px] font-bold flex items-center bottom-0 justify-around text-[#fff] text-[14px] py-4 rounded-md'><FaBars />
+                    <p>The Best Movies and Shows in September</p>
                   </div>
                 </div>
               </div>

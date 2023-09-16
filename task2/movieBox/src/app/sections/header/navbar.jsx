@@ -3,9 +3,13 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 
-export default function Navbar() {
+export default function Navbar({r}) {
     const [burger, setBurger] = useState(false);
     const [scrolling, setScrolling] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    
+
+    
 
     useEffect(() => {
         // Add an event listener to track the scroll position
@@ -16,7 +20,15 @@ export default function Navbar() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-
+ 
+      const handleKeyPress = (event) => {
+        if (event.key === 'Enter' && searchQuery.trim() !== '') {
+          // Handle the Enter key press here
+          // For example, you can perform a search or navigate to a new page
+          console.log('Enter key pressed with query:', searchQuery);
+        }
+      };
+    
     const handleScroll = () => {
         // Calculate the scroll position as a percentage of the viewport height
         const scrollPosition = (window.scrollY / window.innerHeight) * 100;
@@ -28,6 +40,10 @@ export default function Navbar() {
             setScrolling(false);
         }
     };
+
+    const handleInputChange = (event) => {
+        setSearchQuery(event.target.value);
+      };
 
     return (
         <header className={`md-[650px]:px-16 flex justify-between items-center w-full z-20 p-2 fixed ${scrolling ? 'bg-[#000000d2]' : ''}`}>
@@ -43,7 +59,7 @@ export default function Navbar() {
                     </div>
                     <div className=" w-[100%] max-md-[650px]:mt-2">
                         <div className="bg-red-500 flex border bg-transparent rounded-[6px] py-[6px] px-[10px]">
-                            <input className="bg-transparent text-white border-none outline-none w-[100%]" type="search" placeholder="What do you want to watch?" />
+                            <input className="bg-transparent text-white border-none outline-none w-[100%]" type="search" placeholder="What do you want to watch?" onChange={handleInputChange} onKeyUp={handleKeyPress}/>
                             <Image src="Search.svg" alt="searchIcon" height={0} width={20} style={{ width: "auto", height: "auto" }} />
                         </div>
                     </div>
