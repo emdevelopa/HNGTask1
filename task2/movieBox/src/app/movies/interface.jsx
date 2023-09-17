@@ -43,14 +43,14 @@ export default function Interface({ title, id, backdrop_path, poster_path, year,
                 <Image src="Home.svg" alt="logo" width={150} priority height={0} style={{ width: "auto", height: "auto" }} /><p>Home</p>
               </Link>
               <div className=" bg-[#BE123C1A] text-[#BE123C] relative left-0 right-0 flex px-7 py-6 border-r-[5px] border-r-[#BE123C]">
-                <Link className={`flex gap-3`} href={`http://localhost:3000/more_details#title=${title}#id=${id}`}>
+                <Link className={`flex gap-3`} href={`/more_details#title=${title}#id=${id}`}>
                   <Image src="MovieProjector.svg" alt="logo" width={150} priority height={0} style={{ width: "auto", height: "auto" }} /><p>Movies</p>
                 </Link>
               </div>
-              <Link className="flex gap-3 px-7" href={`http://localhost:3000/more_details#TVseries`}>
+              <Link className="flex gap-3 px-7" href={`/more_details#TVseries`}>
                 <Image src="TVShow.svg" alt="logo" width={150} priority height={0} style={{ width: "auto", height: "auto" }} /><p>TV Series</p>
               </Link>
-              <Link className="flex gap-3 px-7" href='http://localhost:3000/more_details#Upcoming'>
+              <Link className="flex gap-3 px-7" href='/more_details#Upcoming'>
                 <Image src="Calendar.svg" alt="logo" width={150} priority height={0} style={{ width: "auto", height: "auto" }} /><p>Upcoming</p>
               </Link>
             </section>

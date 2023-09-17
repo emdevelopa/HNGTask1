@@ -98,13 +98,13 @@ export default function Featured() {
 
                     {favMovies2.map((movie) => (
                         
-                        <div key={movie.id}>
+                        <div data-testid="movie-card" key={movie.id}>
                           
                             <div className="flex flex-col gap-2  relative">
-                            <Link className='absolute h-[25em] w-full' href={`/more_details#title=${movie.title}#id=${movie.id}`}>
+                            <Link className='absolute h-[25em] w-full' href={`/movies#id=${movie.id}`}>
                                 <div className='h-[25em] w-full z-10 absolute hover:bg-[#0000007d]'></div>
                             </Link>
-                                <div className='h-[25em] p-6 flex justify-between bg-cover bg-center bg-no-repeat relative'  style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.poster_path})` }}>
+                                <div data-testid="movie-poster" className='h-[25em] p-6 flex justify-between bg-cover bg-center bg-no-repeat relative'  style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.poster_path})` }}>
                                     <p className='bg-[#f3f4f680] z-30 rounded-[2em] w-[50%] h-[2em] flex justify-center items-center px-2'>Movie</p>
                                     <div className={`rounded-[50%] h-[2em] z-30 w-[2em] flex justify-center ${isMovieFavorited(movie.id) ? 'bg-red-600' : 'bg-[#f3f4f680]'}`} onClick={() => {
                                         toggleFavMovie(movie.id);
@@ -114,8 +114,8 @@ export default function Featured() {
                                    
                                 </div>
                                 
-                                <p>{movieDetails[movie.id]?.production_companies[0].origin_country} {movieDetails[movie.id]?.release_date.substring(0,4)} </p>
-                                <h2 className='font-bold text-[24px]'>{movie.title}</h2>
+                                <p data-testid="movie-release-date">{movieDetails[movie.id]?.production_companies[0].origin_country} {movieDetails[movie.id]?.release_date.substring(0,4)} </p>
+                                <h2 data-testid="movie-title" className='font-bold text-[24px]'>{movie.title}</h2>
                                 <div className="flex gap-8 justify-between">
                                     <div className="flex gap-2 items-center">
                                         <Image src="IMBD.svg" alt="imdb" width={40} height={40} style={{ width: "auto", height: "auto" }} />

@@ -129,7 +129,7 @@ export default function MoreDetails() {
   setTimeout(() => {
     setLoading(false)
   }, 3000);
-  if (results === "https://hngx2.netlify.app/more_details") {
+  if (results === "https://hngx2.netlify.app/movies") {
     // console.log("redirecting");
     redirectTo('/');
   }
@@ -156,7 +156,7 @@ export default function MoreDetails() {
 
 
   if (movieDetails?.title && getMovieid) {
-    if (!isNaN(getMovieid && results === `https://hngx2.netlify.app/more_details#title=${movieDetails?.title}#id=${getMovieid}`)) {
+    if (!isNaN(getMovieid && results === `https://hngx2.netlify.app/movies#id=${getMovieid}`)) {
       // Render movie details once data is loaded and getMovieid is a valid number
       return (
         <>
