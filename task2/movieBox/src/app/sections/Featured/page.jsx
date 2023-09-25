@@ -18,7 +18,7 @@ export default function Featured() {
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
-                }
+                }burger
                 return response.json();
             })
             .then((data) => {
