@@ -1,36 +1,60 @@
-import Image from "next/image"
-import { useState } from "react"
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function Carousel({ images }) {
-    const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-    const nextSlide = () => {
+  // Add auto-slide functionality
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextSlide();
+    }, 3000); // Change the interval duration (in milliseconds) as needed
 
-        setCurrentSlide((prevSlide) => {
-            prevSlide === images.length - 1 ? 0 : prevSlide + 1
-        })
-    }
-    const prevSlide = () => {
-        setCurrentSlide((prevSlide) => {
-            prevSlide === 0 ? images.length - 1 : prevSlide - 1
-        })
-    }
-    return (
-        <>
-            <main className="bg-red-900 h-[30em] w-full overflow-hidden">
-                <div className="flex gap-4 transition-transform duration-500 ease-in-out" style={{
-                        transform: `translateX(-${currentSlide * 100}%)`,
-                    }}>
-                    {images.map((image, index) => (
-                        <div key={index} className="bg-blue-400 p-4 w-full flex flex-shrink-0 items-center" style={{ flexBasis: "100%" }}>
-                            <Image src={'/' + image.url} alt={'slider' + index} width={500} height={200} />
-                        </div>
-                    ))}
+    return () => {
+      clearInterval(intervalId); // Clear the interval on component unmount
+    };
+  }, [currentSlide]);
 
-                </div>
-                <button onClick={nextSlide}>Next</button>
-                <button onClick={prevSlide}>prev</button>
-            </main>
-        </>
-    )
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === images.length - 1 ? 0 : prevSlide + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? images.length - 1 : prevSlide - 1
+    );
+  };
+
+  return (
+    <>
+      <main className=" w-[18em] overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{
+            transform: `translateX(-${currentSlide * 100}%)`,
+          }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="flex flex-shrink-0 items-center h-[12em] rounded"
+              style={{ flexBasis: "100%",background:`url(${image.url})`,backgroundRepeat:'no-repeat', backgroundSize:'contain',backgroundSize:'18em 12em'}}
+            >
+              {/* <Image
+                src={"/" + image.url}
+                alt={"slider" + index}
+                width={500}
+                height={200}
+              /> */}
+            </div>
+          ))}
+        </div>
+        
+      </main>
+      {/* <button onClick={nextSlide}>Next</button>
+        <button onClick={prevSlide}>Prev</button> */}
+    </>
+  );
 }
