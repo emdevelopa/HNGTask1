@@ -1,12 +1,12 @@
-
 "use client"
 import Navbar from './components/nav'
-import { useEffect } from 'react';
+import Homepage from './components/home/home'
 
 export default function Home() {
   return (
     <div>
       <Navbar/>
+      <Homepage/>
     </div>
   )
 }

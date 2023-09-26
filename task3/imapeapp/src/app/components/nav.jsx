@@ -26,10 +26,10 @@ const Navbar = () => {
         <h1>MEMO</h1>
       </div>
       <div className='w-[15%] flex justify-between items-center text-lg'>
-        <Link href="login"
+        <Link href="components/login"
           className='rounded-[10em] py-2 px-4 hover:bg-black hover:text-white'>Login
         </Link>
-        <Link href="signup"
+        <Link href="components/signup"
           className='bg-black text-white rounded-[10em] py-2 px-4 hover:bg-white hover:text-black'>Sign up
           </Link>
       </div>
