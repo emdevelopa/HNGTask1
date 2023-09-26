@@ -4,9 +4,15 @@ import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 
 export default function Login() {
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleLogin = async (e)=>{
-    e.preventDefault()
+    e.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
   try {
     const response = await fetch('https://649ac56abf7c145d023971ee.mockapi.io/api/V1/hngImgGalleryADmin')
 
@@ -18,6 +24,8 @@ export default function Login() {
     console.log(jsonData);
   } catch (error) {
     console.log(error);
+  }finally {
+    setIsSubmitting(false);
   }
   }
 
@@ -28,7 +36,7 @@ export default function Login() {
           <div className="bg-[#3d3d3d59] rounded-lg border border-[#b5b5b5ac] text-[#fff] px-14 max-[500px]:px-4  py-10">
             <h1 className="text-center font-bold text-[28px] mb-6"> SIGN IN</h1>
 
-            <form className="flex flex-col gap-6" onSubmit={handleLogin()}>
+            <form className="flex flex-col gap-6" onSubmit={handleLogin}>
               <div className="flex justify-center gap-6">
                 <div className="p-3 bg-black rounded-[50%] hover:text-black hover:bg-[#fff]"><FaGoogle /></div>
                 <div className="p-3 bg-black rounded-[50%] hover:text-black hover:bg-[#fff]"><FaFacebook /></div>
