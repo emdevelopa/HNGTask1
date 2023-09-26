@@ -17,11 +17,11 @@ export default function Login() {
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-bold">Username</label>
-                <input type='text' className="bg-[#56565660] outline-none rounded-[2px] p-3" placeholder="Email or Username" />
+                <input type='text' className="bg-[#56565660] outline-none rounded-[2px] p-3 focus:border-blue-300 focus:border " placeholder="Email or Username" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-bold">Password</label>
-                <input type='text' className="bg-[#56565660] outline-none rounded-[2px] p-3" placeholder="Password" />
+                <input type='text' className="bg-[#56565660] outline-none rounded-[2px] p-3 focus:border-blue-300 focus:border" placeholder="Password" />
               </div>
               <div className="mt-6">
                 <input type='submit' className="bg-[#ffffff] w-full outline-none rounded-[2px] hover:bg-black hover:text-white p-3 text-black font-bold" value='Log in' />
