@@ -15,8 +15,10 @@ const Navbar = () => {
     // Implement your logout logic here
     // For example, clearing sessionStorage and redirecting to login page
     sessionStorage.clear();
-    window.location.href = '/accounts/login';
+    window.location.href = '/login';
   };
+
+  const hasSessionStorageItem = sessionStorage.getItem('id');
 
   
 
@@ -26,12 +28,12 @@ const Navbar = () => {
         <h1>MEMO</h1>
       </div>
       <div className='w-[15%] flex justify-between items-center text-lg'>
-        <Link href="components/login"
+       {!hasSessionStorageItem ? <><Link href="components/login"
           className='rounded-[10em] py-2 px-4 hover:bg-black hover:text-white'>Login
-        </Link>
-        <Link href="components/signup"
+        </Link><Link href="components/signup"
           className='bg-black text-white rounded-[10em] py-2 px-4 hover:bg-white hover:text-black'>Sign up
-          </Link>
+          </Link></>:<button onClick={handleLogout}>Log out</button>
+          }
       </div>
      
     </nav>
