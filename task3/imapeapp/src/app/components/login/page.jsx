@@ -1,7 +1,23 @@
 import Link from "next/link";
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
+
 export default function Login() {
+
+  const handleLogin = async ()=>{
+  try {
+    const response = await fetch('https://649ac56abf7c145d023971ee.mockapi.io/api/V1/hngImgGalleryADmin')
+
+    if (!response.ok) {
+       throw new Error('Network response badd')
+    }
+
+    const jsonData = await response.json()
+    console.log(jsonData);
+  } catch (error) {
+    console.log(error);
+  }
+  }
 
   return (
     <>
