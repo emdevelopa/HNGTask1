@@ -7,7 +7,7 @@ export default function Login() {
     <>
       <main className="flex items-center justify-center h-screen bg-[#0f0a2c] bg-blend-saturation ">
         <div className="p-4  max-[500px]:w-full">
-          <div className="bg-[#3d3d3d59] rounded border border-[#b5b5b5ac] text-[#fff] px-14 max-[500px]:px-4  py-10">
+          <div className="bg-[#3d3d3d59] rounded-lg border border-[#b5b5b5ac] text-[#fff] px-14 max-[500px]:px-4  py-10">
             <h1 className="text-center font-bold text-[28px] mb-6"> SIGN IN</h1>
 
             <form className="flex flex-col gap-6">
