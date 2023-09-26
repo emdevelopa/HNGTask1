@@ -24,7 +24,7 @@ export default function Login() {
                 <input type='text' className="bg-[#56565660] outline-none rounded-[2px] p-3" placeholder="Password" />
               </div>
               <div className="mt-6">
-                <input type='submit' className="bg-[#ffffff] w-full outline-none rounded-[2px] p-3 text-black font-bold" value='Log in' />
+                <input type='submit' className="bg-[#ffffff] w-full outline-none rounded-[2px] hover: p-3 text-black font-bold" value='Log in' />
               </div>
               <Link href='signup' className="hover:underline hover:text-blue-500">Create Account -&gt;</Link>
             </form>
