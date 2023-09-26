@@ -15,7 +15,7 @@ const Navbar = () => {
     // Implement your logout logic here
     // For example, clearing sessionStorage and redirecting to login page
     sessionStorage.clear();
-    window.location.href = '/login';
+    window.location.href = 'components/login';
   };
 
   const hasSessionStorageItem = sessionStorage.getItem('id');
