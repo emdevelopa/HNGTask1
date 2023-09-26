@@ -1,1 +1,0 @@
-'https://649ac56abf7c145d023971ee.mockapi.io/api/V1/hngImgGalleryADmin'
