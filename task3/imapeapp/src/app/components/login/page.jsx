@@ -5,28 +5,14 @@ import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 
 export default function Login() {
-  const[FormData, setFormData] = useState({
-    name: '',
-    pwd: ''
-  })
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...FormData,
-      [name]: value,
-    });
-  };
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [username,setUsername] = useState('')
+  const [password,setPassword] = useState('')
+
+  console.log(username, password);
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (isSubmitting) {
-      return;
-    }
-
-    setIsSubmitting(true);
     try {
       const response = await fetch('https://649ac56abf7c145d023971ee.mockapi.io/api/V1/hngImgGalleryADmin')
 
@@ -39,7 +25,7 @@ export default function Login() {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsSubmitting(false);
+    
     }
   }
 
@@ -57,14 +43,18 @@ export default function Login() {
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-bold">Username</label>
-                <input type='text' onChange={handleChange} value={FormData.name} className="bg-[#56565660] outline-none rounded-[2px] p-3 focus:border-blue-300 focus:border " placeholder="Email or Username" />
+                <input type='text' value={username} className="bg-[#56565660] outline-none rounded-[2px] p-3 focus:border-blue-300 focus:border " placeholder="Email or Username"onChange={(e)=>{
+                  setUsername(e.target.value)
+                }}/>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-bold">Password</label>
-                <input type='text' value={FormData.pwd} className="bg-[#56565660] outline-none rounded-[2px] p-3 focus:border-blue-300 focus:border" placeholder="Password" />
+                <input type='text' value={password}  className="bg-[#56565660] outline-none rounded-[2px] p-3 focus:border-blue-300 focus:border" placeholder="Password" onChange={(e)=>{
+                  setPassword(e.target.value)
+                }}/>
               </div>
               <div className="mt-6">
-                <input type='submit' onChange={handleChange} className="bg-[#ffffff] w-full outline-none rounded-[2px] hover:bg-black hover:text-white p-3 text-black font-bold" value='Log in' />
+                <input type='submit' className="bg-[#ffffff] w-full outline-none rounded-[2px] hover:bg-black hover:text-white p-3 text-black font-bold" value='Log in' />
               </div>
               <Link href='signup' className="hover:underline hover:text-blue-500">Create Account -&gt;</Link>
             </form>
