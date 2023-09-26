@@ -25,13 +25,14 @@ export default function Login() {
         const jsonData = await response.json()
         console.log(jsonData);
         if (jsonData[0].pwd === password) {
-          console.log(true);
+          sessionStorage.setItem('id',password)
+          window.location.href = '/'
         }
         console.log(false);
       } catch (error) {
         console.log(error);
       } finally {
-
+        
       }
     }
   }
