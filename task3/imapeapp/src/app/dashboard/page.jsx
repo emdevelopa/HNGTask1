@@ -8,6 +8,7 @@ export default function Dashboard() {
 
     console.log(img);
 
+
     // const hasSessionStorageItem = sessionStorage.getItem('id');
 
 
@@ -25,7 +26,7 @@ export default function Dashboard() {
                     }}/>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 m gap-2 place-items-center">
-                    <img src={img} alt='imgg' width='100px' height='100px'/>
+                    {/* <img src={img} alt='imgg' width='100px' height='100px'/> */}
                     <div className="w-[20em] h-[15em] rounded-lg bg-black"></div>
                     <div className="w-[20em] h-[15em] rounded-lg bg-black"></div>
                     <div className="w-[20em] h-[15em] rounded-lg bg-black"></div>
