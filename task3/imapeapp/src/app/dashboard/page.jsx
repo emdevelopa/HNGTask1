@@ -1,7 +1,11 @@
 export default function Dashboard(){
     return(
         <>
-         <h1>Dashboard</h1>
+         <section>
+            <div className="bg-blue-950 w-[10em] h-[10em]">
+                <h1>DRAG AND DROP HERE</h1>
+            </div>
+         </section>
         </>
     )
 }
