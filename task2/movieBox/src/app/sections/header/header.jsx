@@ -21,6 +21,7 @@ export default function Header() {
         console.error("Error fetching trending movies:", error);
       }
     };
+    console.log(hello);
 
     fetchTrendingMovies();
   }, [apiUrl]);
