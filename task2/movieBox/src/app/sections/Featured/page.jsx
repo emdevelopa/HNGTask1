@@ -18,15 +18,15 @@ export default function Featured() {
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
-                }burger
+                }
                 return response.json();
             })
             .then((data) => {
-                // Update the state with the fetched data
                 setMovies(data.results);
             })
             .catch((error) => {
                 console.error('There was a problem with the fetch operation:', error);
+                // Display an error message to the user
             });
     }, [apiKey]);
 

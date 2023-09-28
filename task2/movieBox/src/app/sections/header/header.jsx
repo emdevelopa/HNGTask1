@@ -9,6 +9,7 @@ export default function Header() {
 
   const apiKey = '2d02ad9838a96f971164752877c1f7ec';
   const apiUrl = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`;
+  console.log('hello');
 
   useEffect(() => {
     // Fetch trending movies from TMDB API using environment variable
@@ -21,7 +22,7 @@ export default function Header() {
         console.error("Error fetching trending movies:", error);
       }
     };
-    console.log(hello);
+    
 
     fetchTrendingMovies();
   }, [apiUrl]);
